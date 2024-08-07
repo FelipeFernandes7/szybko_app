@@ -3,7 +3,7 @@ import { BlurView } from "@react-native-community/blur";
 import { StyleSheet } from "react-native";
 import { COLORS } from "../theme/theme";
 
-import Icon from "../components/Icon";
+import { TabBarIcon } from "../components/Icon";
 import Home from "../screens/Home";
 import Search from "../screens/Search";
 import History from "../screens/History";
@@ -32,7 +32,7 @@ export default function TabNavigator() {
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Icon
+            <TabBarIcon
               name="home"
               size={25}
               color={
@@ -47,7 +47,7 @@ export default function TabNavigator() {
         component={Search}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Icon
+            <TabBarIcon
               name="search"
               size={25}
               color={
@@ -62,7 +62,7 @@ export default function TabNavigator() {
         component={History}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Icon
+            <TabBarIcon
               name="bell"
               size={25}
               color={
