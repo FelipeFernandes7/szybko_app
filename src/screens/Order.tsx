@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { COLORS } from "../theme/theme";
 
-export default function History() {
+export default function Order() {
   return (
     <View style={styles.container}>
-      <Text>History</Text>
+      <Text>Order</Text>
     </View>
   );
 }

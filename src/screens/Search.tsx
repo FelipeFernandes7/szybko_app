@@ -1,21 +1,16 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import Icon from "../components/Icon";
-import { BORDERRADIUS, COLORS, SPACING } from "../theme/theme";
+import { StyleSheet, TextInput, View } from "react-native";
+import { TabBarIcon } from "../components/Icon";
+import { BORDERRADIUS, COLORS } from "../theme/theme";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { SearchIcon } from "lucide-react-native";
 
 export default function Search() {
   const [search, onChangeSearch] = useState("");
   return (
     <View style={styles.screenContainer}>
       <SafeAreaView style={styles.inputContainerComponent}>
-        <Icon name="search" size={25} color={"#94a3b8"} />
+        <SearchIcon size={25} color={"#94a3b8"} />
         <TextInput
           placeholderTextColor={"#94a3b8"}
           value={search}

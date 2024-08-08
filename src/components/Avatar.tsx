@@ -1,13 +1,11 @@
 import { Image, StyleSheet, View } from "react-native";
 import { COLORS, SPACING } from "../theme/theme";
+import { faker } from "@faker-js/faker";
 
 export function Avatar() {
   return (
     <View style={styles.imageContainer}>
-      <Image
-        source={require("../assets/app_images/amazonpay.png")}
-        style={styles.image}
-      />
+      <Image source={{ uri: faker.image.url() }} style={styles.image} />
     </View>
   );
 }

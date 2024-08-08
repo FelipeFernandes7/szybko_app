@@ -1,23 +1,23 @@
 type Page = {
   screenName: string;
-  path: string;
+  pathname: string;
 };
 
 export const page: Page[] = [
   {
-    screenName: "Dia do Lixo",
-    path: "Day",
+    screenName: "Lixo",
+    pathname: "Day",
   },
   {
-    screenName: "Lanchinho da Tarde",
-    path: "Snack",
+    screenName: "Lanchinho",
+    pathname: "Snack",
   },
   {
     screenName: "Encomenda",
-    path: "Order",
+    pathname: "Order",
   },
   {
     screenName: "Comunicado",
-    path: "Statement",
+    pathname: "Statement",
   },
 ];

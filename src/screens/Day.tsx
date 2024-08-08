@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { COLORS } from "../theme/theme";
 
-export default function History() {
+export default function Day() {
   return (
     <View style={styles.container}>
-      <Text>History</Text>
+      <Text>Day</Text>
     </View>
   );
 }

@@ -3,10 +3,17 @@ import { BlurView } from "@react-native-community/blur";
 import { StyleSheet } from "react-native";
 import { COLORS } from "../theme/theme";
 
-import { TabBarIcon } from "../components/Icon";
 import Home from "../screens/Home";
-import Search from "../screens/Search";
+import SearchScreen from "../screens/Search";
 import History from "../screens/History";
+import Chat from "../screens/Chat";
+
+import {
+  BellRing,
+  HomeIcon,
+  MessageSquareText,
+  Search,
+} from "lucide-react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,8 +39,7 @@ export default function TabNavigator() {
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon
-              name="home"
+            <HomeIcon
               size={25}
               color={
                 focused ? COLORS.primaryIndigoHex : COLORS.primaryLightGreyHex
@@ -44,11 +50,24 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon
-              name="search"
+            <Search
+              size={30}
+              color={
+                focused ? COLORS.primaryIndigoHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <MessageSquareText
               size={25}
               color={
                 focused ? COLORS.primaryIndigoHex : COLORS.primaryLightGreyHex
@@ -62,8 +81,7 @@ export default function TabNavigator() {
         component={History}
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon
-              name="bell"
+            <BellRing
               size={25}
               color={
                 focused ? COLORS.primaryIndigoHex : COLORS.primaryLightGreyHex

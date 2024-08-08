@@ -1,7 +1,7 @@
 import LinearGradient from "react-native-linear-gradient";
 import { TabBarIcon } from "../components/Icon";
 import { StyleSheet, View, Text } from "react-native";
-import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from "../theme/theme";
+import { COLORS, FONTSIZE, SPACING } from "../theme/theme";
 import { Avatar } from "./Avatar";
 
 type HeaderProps = {
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   headerText: {
-    fontFamily: FONTFAMILY.poppins_semibold,
     fontSize: FONTSIZE.size_20,
     color: COLORS.primaryWhiteHex,
   },
