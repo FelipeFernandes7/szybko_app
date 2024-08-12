@@ -1,19 +1,29 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StatusBar, Text, View } from "react-native";
+import React, { useState } from "react";
+import { Button } from "@/components/Button";
 
 export default function Home() {
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  function handleSubmit() {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setSuccess((b) => !b);
+    }, 2000);
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
+    <View className="flex-1 w-full items-center bg-[#0C0F14] px-8 justify-center">
+      <StatusBar barStyle={"light-content"} />
+      <Text className="text-white">Home</Text>
+      <Button
+        label="Enviar Formulário"
+        isLoading={isLoading}
+        success={success}
+        onPress={handleSubmit}
+      />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    alignItems: "center",
-    backgroundColor: "#0C0F14",
-  },
-});
