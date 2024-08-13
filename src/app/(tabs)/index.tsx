@@ -21,7 +21,7 @@ export default function Home() {
         <Text className="text-white font-bold text-2xl">SZYBKO</Text>
         <View className="w-full flex-row items-center gap-1">
           <Text className="text-white text-lg">Bem vindo</Text>
-          <Text className="text-fuchsia-500 text-lg">Felipe Fernandes</Text>
+          <Text className="text-slate-400 text-lg">Felipe Fernandes</Text>
         </View>
       </View>
 
@@ -30,6 +30,7 @@ export default function Home() {
           <Text className="text-white font-medium text-2xl">{greeting}</Text>
           <GreetingIcon />
         </View>
+
         <View className="flex-col mt-3 px-2 justify-end">
           <Text className="text-white font-medium">{randomPhrase}</Text>
         </View>
