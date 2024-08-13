@@ -21,7 +21,7 @@ export default function Home() {
         <Text className="text-fuchsia-500 font-bold text-2xl">SZYBKO</Text>
         <View className="w-full flex-row items-center gap-1">
           <Text className="text-white text-lg">Bem vindo</Text>
-          <Text className="text-fuchsia-500 text-lg">Felipe Fernandes</Text>
+          <Text className="text-indigo-500 text-lg">Felipe Fernandes</Text>
         </View>
       </View>
 
@@ -72,7 +72,7 @@ export default function Home() {
           className="w-[189px] flex-col bg-neutral-800 px-4 rounded-[30px] p-3 h-32"
         >
           <View className="w-full flex-row justify-between items-center mb-4">
-            <View className="bg-red-500 h-11 w-11 rounded-[18px] items-center justify-center">
+            <View className="bg-sky-500 h-11 w-11 rounded-[18px] items-center justify-center">
               <Trash2 size={25} className="text-white" />
             </View>
             <ChevronRight className="text-white" />
