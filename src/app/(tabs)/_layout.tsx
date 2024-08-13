@@ -23,18 +23,18 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <HomeIcon size={25} color={focused ? "#6366f1" : "#52555A"} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="search"
         options={{
           tabBarIcon: ({ focused }) => (
             <Search size={25} color={focused ? "#6366f1" : "#52555A"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="index"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <HomeIcon size={25} color={focused ? "#6366f1" : "#52555A"} />
           ),
         }}
       />

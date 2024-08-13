@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
-export default function Search() {
+export default function Employees() {
   return (
     <View>
-      <Text>Search</Text>
+      <Text>employees</Text>
     </View>
   );
 }

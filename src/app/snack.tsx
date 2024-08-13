@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
-export default function Search() {
+export default function Snack() {
   return (
     <View>
-      <Text>Search</Text>
+      <Text>Snack</Text>
     </View>
   );
 }
