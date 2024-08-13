@@ -18,10 +18,10 @@ export default function Home() {
   return (
     <View className="w-full flex-1 justify-center items-center px-2">
       <View className="flex-col w-full px-4">
-        <Text className="text-fuchsia-500 font-bold text-2xl">SZYBKO</Text>
+        <Text className="text-white font-bold text-2xl">SZYBKO</Text>
         <View className="w-full flex-row items-center gap-1">
           <Text className="text-white text-lg">Bem vindo</Text>
-          <Text className="text-indigo-400 text-lg">Felipe Fernandes</Text>
+          <Text className="text-fuchsia-500 text-lg">Felipe Fernandes</Text>
         </View>
       </View>
 
