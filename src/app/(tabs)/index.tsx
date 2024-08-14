@@ -18,25 +18,47 @@ export default function Home() {
   return (
     <View className="w-full flex-1 justify-center items-center px-2">
       <View className="flex-col w-full px-4">
-        <Text className="text-white font-bold text-2xl">SZYBKO</Text>
+        <Text style={{ fontFamily: "Poppins" }} className="text-white text-2xl">
+          SZYBKO
+        </Text>
         <View className="w-full flex-row items-center gap-1">
-          <Text className="text-white text-lg">Bem vindo</Text>
-          <Text className="text-slate-400 text-lg">Felipe Fernandes</Text>
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-white text-lg"
+          >
+            Bem vindo
+          </Text>
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-indigo-500 text-lg"
+          >
+            Felipe Fernandes
+          </Text>
         </View>
       </View>
 
       <View className="w-full bg-indigo-500 rounded-[32px] px-4 py-4 my-4 flex-col">
         <View className="flex-row justify-between px-2">
-          <Text className="text-white font-medium text-2xl">{greeting}</Text>
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-white font-medium text-2xl"
+          >
+            {greeting}
+          </Text>
           <GreetingIcon />
         </View>
 
         <View className="flex-col mt-3 px-2 justify-end">
-          <Text className="text-white font-medium">{randomPhrase}</Text>
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-white font-medium"
+          >
+            {randomPhrase}
+          </Text>
         </View>
       </View>
 
-      <View className="w-full flex-row flex-wrap justify-center items-center gap-2">
+      <View className="w-full flex-row flex-wrap justify-center items-center gap-2 ">
         <View
           onTouchStart={() => router.push("/employees")}
           className="w-[189px] flex-col bg-neutral-800 px-4 rounded-[30px] p-3 h-32"
@@ -48,8 +70,11 @@ export default function Home() {
             <ChevronRight className="text-white" />
           </View>
 
-          <Text className="text-white font-medium text-center mt-2">
-            LISTA DE FUNCIONÁRIOS
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-white font-medium text-center mt-2"
+          >
+            Lista de funcionários
           </Text>
         </View>
 
@@ -63,8 +88,11 @@ export default function Home() {
             </View>
             <ChevronRight className="text-white" />
           </View>
-          <Text className="text-white font-medium text-center">
-            LANCHE DA TARDE
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-white font-medium text-center"
+          >
+            Lanche da tarde
           </Text>
         </View>
 
@@ -78,7 +106,12 @@ export default function Home() {
             </View>
             <ChevronRight className="text-white" />
           </View>
-          <Text className="text-white font-medium text-center">TIRAR LIXO</Text>
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-white font-medium text-center"
+          >
+            Tirar lixo
+          </Text>
         </View>
 
         <View
@@ -91,7 +124,12 @@ export default function Home() {
             </View>
             <ChevronRight className="text-white" />
           </View>
-          <Text className="text-white font-medium text-center">ENCOMENDA</Text>
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="text-white font-medium text-center"
+          >
+            Encomenda
+          </Text>
         </View>
       </View>
     </View>
