@@ -18,43 +18,21 @@ export default function Home() {
   return (
     <View className="w-full flex-1 justify-center items-center px-2">
       <View className="flex-col w-full px-4">
-        <Text style={{ fontFamily: "Poppins" }} className="text-white text-2xl">
-          SZYBKO
-        </Text>
+        <Text className="text-white text-2xl">SZYBKO</Text>
         <View className="w-full flex-row items-center gap-1">
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white text-lg"
-          >
-            Bem vindo
-          </Text>
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-indigo-500 text-lg"
-          >
-            Felipe Fernandes
-          </Text>
+          <Text className="text-white text-lg">Bem vindo</Text>
+          <Text className="text-indigo-500 text-lg">Felipe Fernandes</Text>
         </View>
       </View>
 
       <View className="w-full bg-indigo-500 rounded-[32px] px-4 py-4 my-4 flex-col">
         <View className="flex-row justify-between px-2">
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white font-medium text-2xl"
-          >
-            {greeting}
-          </Text>
+          <Text className="text-white font-medium text-2xl">{greeting}</Text>
           <GreetingIcon />
         </View>
 
         <View className="flex-col mt-3 px-2 justify-end">
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white font-medium"
-          >
-            {randomPhrase}
-          </Text>
+          <Text className="text-white font-medium">{randomPhrase}</Text>
         </View>
       </View>
 
@@ -70,10 +48,7 @@ export default function Home() {
             <ChevronRight className="text-white" />
           </View>
 
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white font-medium text-center mt-2"
-          >
+          <Text className="text-white font-medium text-center mt-2">
             Lista de funcionários
           </Text>
         </View>
@@ -88,10 +63,7 @@ export default function Home() {
             </View>
             <ChevronRight className="text-white" />
           </View>
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white font-medium text-center"
-          >
+          <Text className="text-white font-medium text-center">
             Lanche da tarde
           </Text>
         </View>
@@ -106,12 +78,7 @@ export default function Home() {
             </View>
             <ChevronRight className="text-white" />
           </View>
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white font-medium text-center"
-          >
-            Tirar lixo
-          </Text>
+          <Text className="text-white font-medium text-center">Tirar lixo</Text>
         </View>
 
         <View
@@ -124,12 +91,7 @@ export default function Home() {
             </View>
             <ChevronRight className="text-white" />
           </View>
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white font-medium text-center"
-          >
-            Encomenda
-          </Text>
+          <Text className="text-white font-medium text-center">Encomenda</Text>
         </View>
       </View>
     </View>

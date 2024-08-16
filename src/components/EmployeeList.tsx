@@ -1,59 +1,40 @@
-import { BadgeCheck } from "lucide-react-native";
+import { ToggleLeft, ToggleRight } from "lucide-react-native";
 import { View, Image, Text } from "react-native";
 
 type EmployeeListProps = {
   avatarUrl: string;
   username: string;
+  jobType: string;
   status: boolean;
 };
+
 export function EmployeeList({
   avatarUrl,
   username,
+  jobType,
   status = false,
 }: EmployeeListProps) {
   return (
-    <View
-      className={`w-full flex-row p-2 justify-between border-b border-slate-900 ${
-        status ? "bg-transparent" : "bg-red-950 "
-      }`}
-    >
-      <View className="flex-row gap-2">
+    <View className="w-full flex-row border-b justify-between p-2">
+      <View className="flex-row gap-4">
         <Image
-          className="rounded-[18px]"
+          className="rounded-2xl"
           source={{ uri: avatarUrl }}
-          resizeMode="cover"
           height={55}
           width={55}
+          resizeMode="cover"
         />
 
         <View className="flex-col">
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="text-white font-medium"
-          >
-            {username}
-          </Text>
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className={`${
-              status ? "text-emerald-500" : "text-red-500"
-            } text-[10px]`}
-          >
-            {status ? "Ativo" : "Inativo"}
-          </Text>
+          <Text className="text-white font-bold">{username}</Text>
+          <Text className="text-slate-500 text-xs font-bold">{jobType}</Text>
         </View>
       </View>
 
-      {status && (
-        <BadgeCheck
-          className="text-emerald-200"
-          fill={"#10b981"}
-          strokeWidth={1}
-        />
-      )}
-
-      {!status && (
-        <BadgeCheck className="text-red-200" fill={"#ef4444"} strokeWidth={1} />
+      {status ? (
+        <ToggleLeft size={18} color={"#10b981"} />
+      ) : (
+        <ToggleRight size={18} color={"#ef4444"} />
       )}
     </View>
   );

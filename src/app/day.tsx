@@ -4,7 +4,7 @@ import React from "react";
 export default function Day() {
   return (
     <View>
-      <Text>Day</Text>
+      <Text>Tirar lixo</Text>
     </View>
   );
 }
