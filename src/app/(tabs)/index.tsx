@@ -1,5 +1,6 @@
 import {
   ChevronRight,
+  LogIn,
   Package,
   Sandwich,
   Trash2,
@@ -16,82 +17,69 @@ export default function Home() {
   const randomPhrase = getRandomPhrase();
 
   return (
-    <View className="w-full flex-1 justify-center items-center px-2">
-      <View className="flex-col w-full px-4">
-        <Text className="text-white text-2xl">SZYBKO</Text>
-        <View className="w-full flex-row items-center gap-1">
-          <Text className="text-white text-lg">Bem vindo</Text>
-          <Text className="text-indigo-500 text-lg">Felipe Fernandes</Text>
-        </View>
-      </View>
-
-      <View className="w-full bg-indigo-500 rounded-[32px] px-4 py-4 my-4 flex-col">
-        <View className="flex-row justify-between px-2">
-          <Text className="text-white font-medium text-2xl">{greeting}</Text>
+    <View className="w-full flex-1 flex-col items-center justify-center">
+      <View className="w-full flex-col px-4 my-5">
+        <View className="w-full flex-row items-center justify-between ">
+          <Text className="text-white text-xl font-bold">{greeting}</Text>
           <GreetingIcon />
         </View>
-
-        <View className="flex-col mt-3 px-2 justify-end">
-          <Text className="text-white font-medium">{randomPhrase}</Text>
-        </View>
+        <Text className="text-white">{randomPhrase}</Text>
       </View>
 
-      <View className="w-full flex-row flex-wrap justify-center items-center gap-2 ">
+      <View className="w-full items-center px-4 gap-2">
         <View
           onTouchStart={() => router.push("/employees")}
-          className="w-[189px] flex-col bg-neutral-800 px-4 rounded-[30px] p-3 h-32"
+          className="w-full flex-row items-center border border-neutral-800 justify-between rounded-2xl p-2"
         >
-          <View className="w-full flex-row justify-between items-center">
-            <View className="bg-fuchsia-500 h-11 w-11 rounded-[18px] items-center justify-center">
-              <User size={25} className="text-white" />
-            </View>
-            <ChevronRight className="text-white" />
+          <View className="w-11 h-11 items-center justify-center bg-neutral-800 rounded-xl">
+            <User size={25} color={"#ffff"} />
           </View>
-
-          <Text className="text-white font-medium text-center mt-2">
-            Lista de funcionários
-          </Text>
+          <Text className="text-white font-bold">Funcionários</Text>
+          <ChevronRight className="text-white" />
         </View>
 
         <View
           onTouchStart={() => router.push("/snack")}
-          className="w-[189px] flex-col bg-neutral-800 px-4 rounded-[30px] p-3 h-32"
+          className="w-full flex-row items-center border border-neutral-800 justify-between rounded-2xl p-2"
         >
-          <View className="w-full flex-row justify-between items-center mb-4">
-            <View className="bg-emerald-500 h-11 w-11 rounded-[18px] items-center justify-center">
-              <Sandwich size={25} className="text-white" />
-            </View>
-            <ChevronRight className="text-white" />
+          <View className="w-11 h-11 items-center justify-center bg-neutral-800 rounded-xl">
+            <Sandwich size={25} color={"#ffff"} />
           </View>
-          <Text className="text-white font-medium text-center">
-            Lanche da tarde
-          </Text>
-        </View>
-
-        <View
-          onTouchStart={() => router.push("/day")}
-          className="w-[189px] flex-col bg-neutral-800 px-4 rounded-[30px] p-3 h-32"
-        >
-          <View className="w-full flex-row justify-between items-center mb-4">
-            <View className="bg-sky-500 h-11 w-11 rounded-[18px] items-center justify-center">
-              <Trash2 size={25} className="text-white" />
-            </View>
-            <ChevronRight className="text-white" />
-          </View>
-          <Text className="text-white font-medium text-center">Tirar lixo</Text>
+          <Text className="text-white font-bold">Lanche da tarde</Text>
+          <ChevronRight className="text-white" />
         </View>
 
         <View
           onTouchStart={() => router.push("/order")}
-          className="w-[189px] flex-col bg-neutral-800 px-4 rounded-[30px] p-3 h-32"
+          className="w-full flex-row items-center border border-neutral-800 justify-between rounded-2xl p-2"
         >
-          <View className="w-full flex-row justify-between items-center mb-4">
-            <View className="bg-indigo-500 h-11 w-11 rounded-[18px] items-center justify-center">
-              <Package size={25} className="text-white" />
-            </View>
-            <ChevronRight className="text-white" />
+          <View className="w-11 h-11 items-center justify-center bg-neutral-800 rounded-xl">
+            <Package size={25} color={"#ffff"} />
           </View>
-          <Text className="text-white font-medium text-center">Encomenda</Text>
+          <Text className="text-white font-bold">Encomendas</Text>
+          <ChevronRight className="text-white" />
+        </View>
+
+        <View
+          onTouchStart={() => router.push("/day")}
+          className="w-full flex-row items-center border border-neutral-800 justify-between rounded-2xl p-2"
+        >
+          <View className="w-11 h-11 items-center justify-center bg-neutral-800 rounded-xl">
+            <Trash2 size={25} color={"#ffff"} />
+          </View>
+          <Text className="text-white font-bold">Tirar o lixo</Text>
+          <ChevronRight className="text-white" />
+        </View>
+
+        <View
+          onTouchStart={() => router.push("/signUp")}
+          className="w-full flex-row items-center border border-neutral-800 justify-between rounded-2xl p-2"
+        >
+          <View className="w-11 h-11 items-center justify-center bg-neutral-800 rounded-xl">
+            <LogIn size={25} color={"#ffff"} />
+          </View>
+          <Text className="text-white font-bold">Criar Conta</Text>
+          <ChevronRight className="text-white" />
         </View>
       </View>
     </View>
