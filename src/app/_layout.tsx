@@ -17,7 +17,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    Poppins: require("../../assets/fonts/Poppins-Light.ttf"),
+    Poppins: require("../../assets/fonts/app_icons.ttf"),
   });
 
   useEffect(() => {
@@ -61,6 +61,13 @@ export default function RootLayout() {
           options={{
             animation: "slide_from_right",
             title: "Lanche da tarde",
+          }}
+        />
+        <Stack.Screen
+          name="signIn"
+          options={{
+            animation: "fade_from_bottom",
+            headerShown: false,
           }}
         />
       </Stack>
