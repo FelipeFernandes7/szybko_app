@@ -64,7 +64,7 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
-          name="signIn"
+          name="signUp"
           options={{
             animation: "fade_from_bottom",
             headerShown: false,
