@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/Input";
 import { useForm, Controller } from "react-hook-form";
 import { registerSchema, RegisterSchema } from "@/schemas/registerSchema";
-import { useRegister } from "@/store/signIn";
+import { useRegister } from "@/store/register";
 
 export default function SignUp() {
   const lottieRef = useRef<LottieView>(null);
