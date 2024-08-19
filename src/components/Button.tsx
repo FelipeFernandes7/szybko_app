@@ -28,8 +28,8 @@ export function Button({
 }: ButtonProps) {
   return (
     <TouchableOpacity
-      className={`w-full flex items-center justify-center h-12 rounded-2xl ${
-        error ? "bg-red-500" : success ? "bg-emerald-500" : "bg-indigo-500"
+      className={`w-full flex items-center justify-center h-14 rounded-2xl ${
+        error ? "bg-red-500" : success ? "bg-emerald-500" : "bg-fuchsia-600"
       }`}
       onPress={onPress}
     >
@@ -47,7 +47,7 @@ export function Button({
           </View>
         )}
         {!success && !error && !isLoading && (
-          <Text className="text-white font-bold text-sm">{label}</Text>
+          <Text className="text-white font-bold text-[17px]">{label}</Text>
         )}
         {isLoading && <ActivityIndicator size="small" color="#fff" />}
       </View>
