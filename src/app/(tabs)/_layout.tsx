@@ -1,12 +1,9 @@
 import { Tabs } from "expo-router";
 
-import { useColorScheme } from "@/hooks/useColorScheme";
-import { BellRing, HomeIcon, Search } from "lucide-react-native";
+import { BellRing, HomeIcon, Search, User } from "lucide-react-native";
 import { StyleSheet } from "react-native";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
@@ -17,18 +14,18 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="search"
+        name="index"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Search size={25} color={focused ? "#6366f1" : "#52555A"} />
+            <HomeIcon size={25} color={focused ? "#7c3aed" : "#52555A"} />
           ),
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="search"
         options={{
           tabBarIcon: ({ focused }) => (
-            <HomeIcon size={25} color={focused ? "#6366f1" : "#52555A"} />
+            <Search size={25} color={focused ? "#7c3aed" : "#52555A"} />
           ),
         }}
       />
@@ -36,7 +33,15 @@ export default function TabLayout() {
         name="history"
         options={{
           tabBarIcon: ({ focused }) => (
-            <BellRing size={25} color={focused ? "#6366f1" : "#52555A"} />
+            <BellRing size={25} color={focused ? "#7c3aed" : "#52555A"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <User size={25} color={focused ? "#7c3aed" : "#52555A"} />
           ),
         }}
       />

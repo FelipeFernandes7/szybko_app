@@ -29,7 +29,7 @@ export function Button({
   return (
     <TouchableOpacity
       className={`w-full flex items-center justify-center h-14 rounded-2xl ${
-        error ? "bg-red-500" : success ? "bg-emerald-500" : "bg-fuchsia-600"
+        error ? "bg-red-500" : success ? "bg-emerald-500" : "bg-violet-600"
       }`}
       onPress={onPress}
     >

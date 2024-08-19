@@ -14,7 +14,7 @@ export default function Employees() {
     };
   });
   return (
-    <View className="w-full flex-1 flex-col items-center">
+    <View className="w-full flex-1 flex-col items-center bg-black">
       <ScrollView>
         <View className="w-full flex-row flex-wrap items-center">
           {employee.map((item, index) => (

@@ -1,4 +1,4 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, StatusBar, Text, ToastAndroid, View } from "react-native";
 import LottieView from "lottie-react-native";
 import { useRef } from "react";
 import { Button } from "@/components/Button";
@@ -6,13 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/Input";
 import { useForm, Controller } from "react-hook-form";
 import { registerSchema, RegisterSchema } from "@/schemas/registerSchema";
-import { useRegister } from "@/store/register";
+import { useAuth } from "@/store/auth";
 
 export default function SignUp() {
   const lottieRef = useRef<LottieView>(null);
-  const { handleCreateAccount } = useRegister();
+  const { singUp, success, successLabel } = useAuth();
+
   const {
     handleSubmit,
+    watch,
     reset,
     control,
     formState: { errors },
@@ -21,21 +23,23 @@ export default function SignUp() {
     mode: "onChange",
   });
 
-  function onSubmit(formValues: RegisterSchema) {
+  async function onSubmit(formValues: RegisterSchema) {
     const { username, email, password } = formValues;
     try {
       if (password === formValues.confirmPassword) {
-        handleCreateAccount(username, email, password);
+        await singUp(username, email, password);
         reset();
       }
     } catch (error) {
+      ToastAndroid.show(error as string, 5000);
       console.error(error);
     }
   }
 
   return (
-    <View className="w-full flex-1 items-center mx-auto">
-      <View className="w-full items-center justify-center bg-neutral-800 rounded-b-[50px]">
+    <View className="w-full flex-1 items-center mx-auto bg-black">
+      <StatusBar barStyle={"light-content"} />
+      <View className="w-full items-center justify-center bg-violet-600 rounded-b-[50px]">
         <LottieView
           ref={lottieRef}
           style={{ width: 250, height: 250 }}
@@ -43,12 +47,14 @@ export default function SignUp() {
           autoPlay
         />
       </View>
-      <View className="w-full flex-row items-center justify-between my-4 px-4">
+
+      <View className="w-full flex-row items-center justify-between my-3 px-4">
         <Text className="text-white font-bold text-2xl">Criar conta </Text>
-        <Text className="text-fuchsia-600 font-bold text-2xl">SZYBKO</Text>
+        <Text className="text-violet-600 font-bold text-2xl">SZYBKO</Text>
       </View>
+
       <ScrollView className="w-full">
-        <View className="w-full flex-col items-center px-4 my-2">
+        <View className="w-full flex-col items-center px-4 ">
           <View className="w-full flex-col my-2">
             <Controller
               control={control}
@@ -59,6 +65,7 @@ export default function SignUp() {
                   label="Nome de usuário"
                   placeholder="Criar nome de usuário"
                   error={errors.username}
+                  isValid={!errors.username && !!watch("username")}
                 />
               )}
             />
@@ -71,6 +78,7 @@ export default function SignUp() {
                   label="E-mail"
                   placeholder="example@gmail.com"
                   error={errors.email}
+                  isValid={!errors.email && !!watch("email")}
                 />
               )}
             />
@@ -83,6 +91,7 @@ export default function SignUp() {
                   onChangeText={onChange}
                   placeholder="Criar Senha"
                   secureTextEntry
+                  isValid={!errors.password && !!watch("password")}
                   error={errors.password}
                 />
               )}
@@ -96,12 +105,20 @@ export default function SignUp() {
                   label="Confirmar senha"
                   placeholder="Confirmar nova senha"
                   secureTextEntry
+                  isValid={
+                    !errors.confirmPassword && !!watch("confirmPassword")
+                  }
                   error={errors.confirmPassword}
                 />
               )}
             />
           </View>
-          <Button onPress={handleSubmit(onSubmit)} label={"Criar conta"} />
+          <Button
+            success={success}
+            successLabel={successLabel}
+            onPress={handleSubmit(onSubmit)}
+            label={"Criar conta"}
+          />
         </View>
       </ScrollView>
     </View>

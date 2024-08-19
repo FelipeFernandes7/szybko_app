@@ -3,12 +3,20 @@ import { UseFormRegister, FieldError } from "react-hook-form";
 
 interface InputProps extends TextInputProps {
   label?: string;
+  isValid?: boolean;
   name?: string;
   error?: FieldError | undefined;
   register?: UseFormRegister<any>;
 }
 
-export function Input({ label, error, name, register, ...rest }: InputProps) {
+export function Input({
+  label,
+  error,
+  name,
+  isValid,
+  register,
+  ...rest
+}: InputProps) {
   return (
     <View className="w-full flex-col mb-4">
       {!!label && (
@@ -18,7 +26,11 @@ export function Input({ label, error, name, register, ...rest }: InputProps) {
       )}
       <View
         className={`w-full h-14 mt-1 ${
-          error ? "border-2 border-red-500" : "border-[1px]"
+          error
+            ? "border-2 border-red-500"
+            : isValid
+            ? "border-2 border-emerald-500"
+            : "border-none"
         } rounded-2xl items-center px-4 bg-transparent justify-between bg-neutral-900`}
       >
         {register && name ? (

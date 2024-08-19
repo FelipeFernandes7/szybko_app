@@ -9,7 +9,7 @@ import {
 import { GreetingIcon } from "@/components/GreetingIcon";
 import { getGreeting } from "@/helpers/greeting";
 import { getRandomPhrase } from "@/helpers/randomPhrase";
-import { Text, View } from "react-native";
+import { StatusBar, Text, View } from "react-native";
 import { router } from "expo-router";
 
 export default function Home() {
@@ -17,16 +17,17 @@ export default function Home() {
   const randomPhrase = getRandomPhrase();
 
   return (
-    <View className="w-full flex-1 flex-col items-center justify-center">
-      <View className="w-full flex-col px-4 my-5">
-        <View className="w-full flex-row items-center justify-between ">
-          <Text className="text-white text-xl font-bold">{greeting}</Text>
+    <View className="w-full flex-1 flex-col items-center bg-black">
+      <StatusBar barStyle={"light-content"} />
+      <View className="w-full flex-col px-4 bg-violet-600 justify-center rounded-b-[50px] p-4">
+        <View className="w-full flex-row items-center justify-between px-4 mt-5">
+          <Text className="text-white text-2xl font-bold">{greeting}</Text>
           <GreetingIcon />
         </View>
-        <Text className="text-white">{randomPhrase}</Text>
+        <Text className="text-slate-300 ml-4 text-lg">{randomPhrase}</Text>
       </View>
 
-      <View className="w-full items-center px-4 gap-2">
+      <View className="w-full items-center px-4 gap-2 mt-6">
         <View
           onTouchStart={() => router.push("/employees")}
           className="w-full flex-row items-center border border-neutral-800 justify-between rounded-2xl p-2"
