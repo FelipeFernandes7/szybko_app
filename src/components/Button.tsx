@@ -5,6 +5,7 @@ import {
   GestureResponderEvent,
   TouchableOpacity,
   ActivityIndicator,
+  TouchableOpacityProps,
 } from "react-native";
 
 type ButtonProps = {
@@ -15,7 +16,7 @@ type ButtonProps = {
   success?: boolean;
   isLoading?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
-};
+} & TouchableOpacityProps;
 
 export function Button({
   label,
@@ -25,9 +26,11 @@ export function Button({
   error = false,
   success = false,
   isLoading = false,
+  ...rest
 }: ButtonProps) {
   return (
     <TouchableOpacity
+      {...rest}
       className={`w-full flex items-center justify-center h-14 rounded-2xl ${
         error ? "bg-red-500" : success ? "bg-emerald-500" : "bg-violet-600"
       }`}
