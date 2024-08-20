@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import React from "react";
 
 export default function Day() {
   return (
-    <View>
-      <Text>Tirar lixo</Text>
+    <View className="w-full flex-1 bg-neutral-900">
+      <Text className="text-white">Tirar lixo</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
