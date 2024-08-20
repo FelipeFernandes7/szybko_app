@@ -1,4 +1,3 @@
-import { ToggleLeft, ToggleRight } from "lucide-react-native";
 import { View, Image, Text } from "react-native";
 
 type EmployeeListProps = {
@@ -15,27 +14,27 @@ export function EmployeeList({
   status = false,
 }: EmployeeListProps) {
   return (
-    <View className="w-full flex-row border-b justify-between p-2">
-      <View className="flex-row gap-4">
+    <View className="w-full flex-row items-center justify-between px-2 my-1">
+      <View className="flex-row items-center">
         <Image
-          className="rounded-2xl"
+          className="rounded-full"
           source={{ uri: avatarUrl }}
-          height={55}
-          width={55}
           resizeMode="cover"
+          height={60}
+          width={60}
         />
-
-        <View className="flex-col">
+        <View className="flex-col ml-2">
           <Text className="text-white font-bold">{username}</Text>
-          <Text className="text-slate-500 text-xs font-bold">{jobType}</Text>
+          <Text className="text-slate-500">{jobType}</Text>
         </View>
       </View>
-
-      {status ? (
-        <ToggleLeft size={18} color={"#10b981"} />
-      ) : (
-        <ToggleRight size={18} color={"#ef4444"} />
-      )}
+      <View
+        className={`${
+          status ? "bg-emerald-500" : "bg-neutral-800"
+        } p-1 px-3 rounded-full items-center justify-center`}
+      >
+        <Text className="text-white">{status ? "Ativo" : "Inativo"}</Text>
+      </View>
     </View>
   );
 }
