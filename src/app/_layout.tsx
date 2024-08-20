@@ -28,6 +28,11 @@ export default function RootLayout() {
       <Stack.Screen
         name="employees"
         options={{
+          headerTintColor: "#FFFFFF",
+          headerStyle: {
+            backgroundColor: "#7c3aed",
+          },
+
           animation: "slide_from_right",
           title: "Lista de funcionários",
         }}
@@ -35,6 +40,10 @@ export default function RootLayout() {
       <Stack.Screen
         name="order"
         options={{
+          headerTintColor: "#FFFFFF",
+          headerStyle: {
+            backgroundColor: "#7c3aed",
+          },
           animation: "slide_from_right",
           title: "Encomendas",
         }}
@@ -42,6 +51,10 @@ export default function RootLayout() {
       <Stack.Screen
         name="day"
         options={{
+          headerTintColor: "#FFFFFF",
+          headerStyle: {
+            backgroundColor: "#7c3aed",
+          },
           animation: "slide_from_right",
           title: "Tirar lixo",
         }}
@@ -49,6 +62,10 @@ export default function RootLayout() {
       <Stack.Screen
         name="snack"
         options={{
+          headerTintColor: "#FFFFFF",
+          headerStyle: {
+            backgroundColor: "#7c3aed",
+          },
           animation: "slide_from_right",
           title: "Lanche da tarde",
         }}
@@ -56,6 +73,10 @@ export default function RootLayout() {
       <Stack.Screen
         name="signUp"
         options={{
+          headerTintColor: "#FFFFFF",
+          headerStyle: {
+            backgroundColor: "#7c3aed",
+          },
           animation: "fade_from_bottom",
           headerShown: false,
         }}
