@@ -19,7 +19,7 @@ type EmployeeProps = {
   email: string;
   status: boolean;
 };
-type TypeFilter = "present" | "absent" | "all";
+type TypeFilter = "present" | "absent" | "all" | "search";
 
 export default function Employees() {
   const employees = useMemo(
@@ -51,6 +51,7 @@ export default function Employees() {
     }
     if (value === "all") {
       setPressedButton(value);
+      setSearch("");
       return setFilter(employees);
     }
     setFilter([]);
@@ -61,8 +62,13 @@ export default function Employees() {
 
   function handleChange(text: string) {
     setSearch(text);
-    setFilter(searchEmployee);
+    setPressedButton("search");
+    if (text === "") {
+      return setFilter(employees);
+    }
+    return setFilter(searchEmployee);
   }
+
   return (
     <View className="w-full flex-1 flex-col items-center bg-neutral-900">
       <Grid columns={3} className="w-full items-center justify-center mt-2">
