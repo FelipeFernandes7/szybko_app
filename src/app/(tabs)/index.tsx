@@ -17,8 +17,8 @@ export default function Home() {
   const randomPhrase = getRandomPhrase();
 
   return (
-    <View className="w-full flex-1 flex-col items-center bg-black">
-      <StatusBar barStyle={"light-content"} />
+    <View className="w-full flex-1 flex-col items-center bg-neutral-900">
+      <StatusBar backgroundColor={"#7c3aed"} barStyle={"light-content"} />
       <View className="w-full flex-col px-4 bg-violet-600 justify-center rounded-b-[50px] p-4">
         <View className="w-full flex-row items-center justify-between px-4 mt-5">
           <Text className="text-white text-2xl font-bold">{greeting}</Text>
