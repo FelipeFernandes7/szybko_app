@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
+import { HeartHandshake } from "lucide-react-native";
 import { Rectangle } from "@/components/Rectangle";
+import { useEffect } from "react";
 import { useTrash } from "@/store/trash";
 import { format } from "date-fns";
-import { HeartHandshake } from "lucide-react-native";
 
 export default function Day() {
   const { currentEmployee, upcomingDuties, setUpcomingDuties } = useTrash();
@@ -37,16 +37,18 @@ export default function Day() {
           </View>
         </Rectangle>
       )}
+
       {!currentEmployee && (
-        <Rectangle>
-          <View className="w-full flex-col items-center justify-center py-5">
+        <View className="w-full rounded-3xl bg-neutral-800 flex-col my-4 p-2 px-4">
+          <View className="w-full flex-col items-center justify-center py-2">
             <HeartHandshake size={50} className="text-gray-500" />
-            <Text className="text-3xl text-gray-500 text-center">
-              Hoje não é dia de ninguém tirar lixo
+            <Text className="text-2xl text-gray-500 text-center">
+              Hoje ninguém tirar lixo, aproveite a folga :)
             </Text>
           </View>
-        </Rectangle>
+        </View>
       )}
+
       <Text className="text-white text-2xl">Próximos a tirar o lixo:</Text>
       <ScrollView className="my-2">
         {upcomingDuties.map(({ employee, date }) => (
