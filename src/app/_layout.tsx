@@ -1,27 +1,11 @@
 import "react-native-reanimated";
 import * as SplashScreen from "expo-splash-screen";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import { useEffect } from "react";
 import Header from "@/components/Header";
+import { Stack } from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded] = useFonts({
-    Poppins: require("../../assets/fonts/app_icons.ttf"),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
     <Stack
       screenOptions={{
