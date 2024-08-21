@@ -33,7 +33,7 @@ const trash = create<State>((set, get) => ({
   employees: Array.from({ length: 10 }).map(() => ({
     id: Math.floor(Math.random() * 1000),
     name: faker.person.fullName(),
-    avatar: faker.image.avatar(),
+    avatar: faker.image.url(),
     jobType: faker.person.jobType(),
   })),
   upcomingDuties: [],
