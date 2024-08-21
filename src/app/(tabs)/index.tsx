@@ -8,7 +8,8 @@ import {
 import { GreetingIcon } from "@/components/GreetingIcon";
 import { getGreeting } from "@/helpers/greeting";
 import { getRandomPhrase } from "@/helpers/randomPhrase";
-import { StatusBar, Text, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { Text, View } from "react-native";
 import { Grid } from "@/components/Grid";
 import { router } from "expo-router";
 
@@ -18,7 +19,7 @@ export default function Home() {
 
   return (
     <View className="w-full flex-1 flex-col items-center bg-neutral-900">
-      <StatusBar backgroundColor={"#7c3aed"} barStyle={"light-content"} />
+      <StatusBar style="light" backgroundColor="#7c3aed" translucent={false} />
       <View className="w-full flex-col px-4 bg-violet-600 justify-center rounded-b-[50px] p-4">
         <View className="w-full flex-row items-center justify-between px-4 mt-5">
           <Text className="text-white text-2xl font-bold">{greeting}</Text>
