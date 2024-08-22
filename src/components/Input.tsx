@@ -18,7 +18,7 @@ export function Input({
   ...rest
 }: InputProps) {
   return (
-    <View className="w-full flex-col mb-4">
+    <View className="w-full flex-col mb-3">
       {!!label && (
         <Text className="font-medium text-white text-sm" aria-label={name}>
           {label}
@@ -31,7 +31,7 @@ export function Input({
             : isValid
             ? "border-2 border-emerald-500"
             : "border-none"
-        } rounded-2xl items-center px-4 bg-transparent justify-between bg-neutral-900`}
+        } rounded-2xl items-center px-4 bg-transparent justify-between border border-neutral-700 bg-neutral-900`}
       >
         {register && name ? (
           <TextInput

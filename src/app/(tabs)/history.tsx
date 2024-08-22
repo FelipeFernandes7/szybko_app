@@ -1,10 +1,11 @@
 import { Text, View } from "react-native";
 import React from "react";
+import { LayoutScreen } from "@/components/LayoutScreen";
 
 export default function History() {
   return (
-    <View className="w-full flex-1 bg-neutral-900">
+    <LayoutScreen>
       <Text className="text-white mt-10">Histórico</Text>
-    </View>
+    </LayoutScreen>
   );
 }

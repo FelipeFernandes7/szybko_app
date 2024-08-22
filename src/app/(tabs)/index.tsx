@@ -1,8 +1,9 @@
 import {
   ChevronRight,
+  Users,
+  LogIn,
   LeafyGreen,
   PackageOpen,
-  Users,
   UtensilsCrossed,
 } from "lucide-react-native";
 import { GreetingIcon } from "@/components/GreetingIcon";
@@ -63,6 +64,19 @@ export default function Home() {
           </View>
           <View className="w-full flex-row justify-between items-center">
             <Text className="text-white font-medium text-sm">Lixo</Text>
+            <ChevronRight size={28} color={"#fff"} />
+          </View>
+        </View>
+
+        <View
+          onTouchStart={() => router.push("/signUp")}
+          className="w-full bg-neutral-900 border border-neutral-600 h-44 rounded-3xl p-3 flex-col justify-between"
+        >
+          <View className="h-14 w-14 rounded-[22px] bg-violet-600 items-center justify-center">
+            <LogIn size={25} color={"#ffff"} />
+          </View>
+          <View className="w-full flex-row justify-between items-center">
+            <Text className="text-white font-medium text-sm">Criar conta</Text>
             <ChevronRight size={28} color={"#fff"} />
           </View>
         </View>

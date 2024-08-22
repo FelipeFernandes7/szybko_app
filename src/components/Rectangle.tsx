@@ -40,7 +40,7 @@ export function Rectangle({ children, ...rest }: RectangleProps) {
   });
 
   const animatedStyle = {
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor,
     borderRadius: 15,
     padding: 10,

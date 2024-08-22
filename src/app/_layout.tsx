@@ -1,11 +1,27 @@
 import "react-native-reanimated";
 import * as SplashScreen from "expo-splash-screen";
-import Header from "@/components/Header";
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
+import { useEffect } from "react";
+import Header from "@/components/Header";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [loaded] = useFonts({
+    Poppins: require("../../assets/fonts/app_icons.ttf"),
+  });
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <Stack
       screenOptions={{
@@ -27,6 +43,7 @@ export default function RootLayout() {
           title: "Lista de funcionários",
         }}
       />
+
       <Stack.Screen
         name="order"
         options={{
@@ -38,6 +55,7 @@ export default function RootLayout() {
           title: "Encomendas",
         }}
       />
+
       <Stack.Screen
         name="day"
         options={{

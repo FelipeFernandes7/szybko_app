@@ -1,24 +1,52 @@
 import { Image, ScrollView, Text, View } from "react-native";
-import { HeartHandshake } from "lucide-react-native";
+import { ChevronRight, HeartHandshake } from "lucide-react-native";
 import { Rectangle } from "@/components/Rectangle";
 import { useEffect } from "react";
 import { useTrash } from "@/store/trash";
-import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import {
+  format,
+  isMonday,
+  isSameYear,
+  isTomorrow,
+  isWednesday,
+} from "date-fns";
 
 export default function Day() {
-  const { currentEmployee, upcomingDuties, setUpcomingDuties } = useTrash();
+  const { currentEmployee, upcomingDuties, setUpcomingDuties, setTrashDuty } =
+    useTrash();
 
   useEffect(() => {
+    setTrashDuty();
     setUpcomingDuties();
   }, []);
+
+  function takeOutTrashDayFormat(date: Date) {
+    const today = new Date();
+
+    if (
+      (isMonday(today) && isTomorrow(date)) ||
+      (isWednesday(today) && isTomorrow(date))
+    ) {
+      return "amanhã";
+    } else if (isSameYear(date, today)) {
+      return format(date, "MMM, dd", { locale: ptBR });
+    } else {
+      return format(date, "dd/MM/yyyy", { locale: ptBR });
+    }
+  }
 
   return (
     <View className="w-full flex-1 bg-neutral-900 px-3">
       {currentEmployee && (
         <Rectangle>
-          <Text className="text-white text-xl">
-            Hoje é a vez de {currentEmployee?.name} tirar o lixo
-          </Text>
+          <View className="w-full flex-row items-center">
+            <Text className="text-white text-xl">Hoje é a vez de</Text>
+            <Text className="text-emerald-500 text-xl mx-2">
+              {currentEmployee?.name.split(" ")[0]}
+            </Text>
+            <Text className="text-white text-xl">tirar o lixo</Text>
+          </View>
           <View className="w-full flex-row gap-2 my-2">
             <Image
               source={{ uri: currentEmployee?.avatar }}
@@ -71,11 +99,11 @@ export default function Day() {
               </View>
             </View>
 
-            <View className="flex-col">
-              <Text className="text-gray-500 font-medium">
-                {format(date, "dd/MM/yyyy")}
+            <View className="flex-row items-center">
+              <Text className="text-emerald-500 font-medium">
+                {takeOutTrashDayFormat(date)}
               </Text>
-              <Text className="text-emerald-500">{"Próximo >>"}</Text>
+              <ChevronRight size={25} className="text-emerald-500" />
             </View>
           </View>
         ))}

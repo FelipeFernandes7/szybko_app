@@ -9,6 +9,7 @@ export type RegisterSchema = {
 export const registerSchema = z
   .object({
     username: z.string({ message: "Campo vazio" }),
+    jobType: z.string(),
     email: z
       .string()
       .email({
