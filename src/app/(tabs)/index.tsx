@@ -5,14 +5,14 @@ import {
   LeafyGreen,
   PackageOpen,
   UtensilsCrossed,
-} from "lucide-react-native";
-import { GreetingIcon } from "@/components/GreetingIcon";
-import { getRandomPhrase } from "@/helpers/randomPhrase";
-import { getGreeting } from "@/helpers/greeting";
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
-import { router } from "expo-router";
-import { Grid } from "@/components/Grid";
+} from 'lucide-react-native';
+import { GreetingIcon } from '@/components/GreetingIcon';
+import { getRandomPhrase } from '@/helpers/randomPhrase';
+import { getGreeting } from '@/helpers/greeting';
+import { StatusBar } from 'expo-status-bar';
+import { Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { Grid } from '@/components/Grid';
 
 export default function Home() {
   const greeting = getGreeting();
@@ -30,67 +30,54 @@ export default function Home() {
       </View>
       <Grid className="w-full mt-5 items-center justify-center" columns={2}>
         <View
-          onTouchStart={() => router.push("/employees")}
+          onTouchStart={() => router.push('/employees')}
           className="w-full bg-neutral-900 border border-neutral-600 h-44 rounded-3xl p-3 flex-col justify-between"
         >
           <View className="h-14 w-14 rounded-[22px] bg-violet-600 items-center justify-center">
-            <Users size={25} color={"#ffff"} />
+            <Users size={25} color={'#ffff'} />
           </View>
           <View className="w-full flex-row justify-between items-center">
             <Text className="text-white font-medium text-sm">Funcionários</Text>
-            <ChevronRight size={28} color={"#fff"} />
+            <ChevronRight size={28} color={'#fff'} />
           </View>
         </View>
 
         <View
-          onTouchStart={() => router.push("/snack")}
+          onTouchStart={() => router.push('/snack')}
           className="w-full bg-neutral-900 border border-neutral-600 h-44 rounded-3xl p-3 flex-col justify-between"
         >
           <View className="h-14 w-14 rounded-[22px] bg-violet-600 items-center justify-center">
-            <UtensilsCrossed size={25} color={"#ffff"} />
+            <UtensilsCrossed size={25} color={'#ffff'} />
           </View>
           <View className="w-full flex-row justify-between items-center">
             <Text className="text-white font-medium text-sm">Lanchinho</Text>
-            <ChevronRight size={28} color={"#fff"} />
+            <ChevronRight size={28} color={'#fff'} />
           </View>
         </View>
 
         <View
-          onTouchStart={() => router.push("/day")}
+          onTouchStart={() => router.push('/day')}
           className="w-full bg-neutral-900 border border-neutral-600 h-44 rounded-3xl p-3 flex-col justify-between"
         >
           <View className="h-14 w-14 rounded-[22px] bg-violet-600 items-center justify-center">
-            <LeafyGreen size={25} color={"#ffff"} />
+            <LeafyGreen size={25} color={'#ffff'} />
           </View>
           <View className="w-full flex-row justify-between items-center">
             <Text className="text-white font-medium text-sm">Lixo</Text>
-            <ChevronRight size={28} color={"#fff"} />
+            <ChevronRight size={28} color={'#fff'} />
           </View>
         </View>
 
         <View
-          onTouchStart={() => router.push("/signUp")}
+          onTouchStart={() => router.push('/order')}
           className="w-full bg-neutral-900 border border-neutral-600 h-44 rounded-3xl p-3 flex-col justify-between"
         >
           <View className="h-14 w-14 rounded-[22px] bg-violet-600 items-center justify-center">
-            <LogIn size={25} color={"#ffff"} />
-          </View>
-          <View className="w-full flex-row justify-between items-center">
-            <Text className="text-white font-medium text-sm">Criar conta</Text>
-            <ChevronRight size={28} color={"#fff"} />
-          </View>
-        </View>
-
-        <View
-          onTouchStart={() => router.push("/order")}
-          className="w-full bg-neutral-900 border border-neutral-600 h-44 rounded-3xl p-3 flex-col justify-between"
-        >
-          <View className="h-14 w-14 rounded-[22px] bg-violet-600 items-center justify-center">
-            <PackageOpen size={25} color={"#ffff"} />
+            <PackageOpen size={25} color={'#ffff'} />
           </View>
           <View className="w-full flex-row justify-between items-center">
             <Text className="text-white font-medium text-sm">Encomendas</Text>
-            <ChevronRight size={28} color={"#fff"} />
+            <ChevronRight size={28} color={'#fff'} />
           </View>
         </View>
       </Grid>
