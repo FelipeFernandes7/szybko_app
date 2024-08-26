@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 export type RegisterSchema = {
   name: string;
   email: string;
