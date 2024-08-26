@@ -1,6 +1,5 @@
-import { ScrollView, StatusBar, Text, ToastAndroid, View } from 'react-native';
-import LottieView from 'lottie-react-native';
-import { useRef, useState } from 'react';
+import { ScrollView, StatusBar, Text, View } from 'react-native';
+import { useState } from 'react';
 import { Button } from '@/components/Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/Input';
@@ -9,12 +8,11 @@ import { registerSchema, RegisterSchema } from '@/schemas/registerSchema';
 import { Select } from '@/components/Select';
 import { Grid } from '@/components/Grid';
 import { useAuth } from '@/contexts/AuthContext';
+import { router } from 'expo-router';
 
 export default function SignUp() {
   const [value, setValue] = useState('');
-  const { signUpWithEmailAndPassword, success } = useAuth();
-  const lottieRef = useRef<LottieView>(null);
-  const successLabel = 'Conta Criada com sucesso!';
+  const { signUpWithEmailAndPassword } = useAuth();
   const jobType = [
     {
       label: 'Desenvolvedor',
@@ -51,36 +49,31 @@ export default function SignUp() {
 
   async function onSubmit(formValues: RegisterSchema) {
     const { name, email, password, jobType } = formValues;
-    try {
-      if (password === formValues.confirmPassword) {
-        await signUpWithEmailAndPassword(name, email, password, jobType);
-        reset();
-      }
-    } catch (error) {
-      ToastAndroid.show(error as string, 5000);
-      console.error(error);
-    }
+
+    await signUpWithEmailAndPassword(name, email, password, jobType)
+      .then(() => {
+        alert('Conta criada com sucesso!');
+        router.push('/signIn');
+      })
+      .catch(err => {
+        alert(`Não foi possível criar conta, erro inesperado! ${err.message}`);
+      });
   }
 
   return (
-    <View className="w-full flex-1 items-center mx-auto bg-neutral-900">
+    <View className="bg-violet-600 flex-1 w-full items-center">
       <StatusBar barStyle={'light-content'} />
-      <View className="w-full items-center justify-center bg-violet-600 rounded-b-[50px]">
-        <LottieView
-          ref={lottieRef}
-          style={{ width: 220, height: 220 }}
-          source={require('@/lotties/mobile.json')}
-          autoPlay
-        />
-      </View>
-
-      <View className="w-full flex-row items-center justify-between my-3 px-4">
-        <Text className="text-white font-bold text-2xl">Criar conta </Text>
-        <Text className="text-violet-600 font-bold text-2xl">SZYBKO</Text>
-      </View>
-
       <ScrollView className="w-full">
-        <Grid columns={1} className="w-full items-center justify-center px-4">
+        <View className="w-full flex-col items-center justify-center p-4">
+          <Text className="text-white text-3xl font-bold">Szybko</Text>
+          <Text className="text-white text-xl text-center mt-2">
+            Transformando a gestão diária em eficiência, rapidez e organização para a sua
+            empresa.
+          </Text>
+        </View>
+
+        <View className="w-full flex-col px-4 bg-neutral-900 rounded-t-3xl ">
+          <Text className="text-white text-3xl my-8 font-medium">Criar Conta</Text>
           <Controller
             control={control}
             name="name"
@@ -125,15 +118,15 @@ export default function SignUp() {
             name="password"
             render={({ field: { onChange } }) => (
               <Input
-                label="Senha"
                 onChangeText={onChange}
-                placeholder="Criar Senha"
-                secureTextEntry
-                isValid={!errors.password && !!watch('password')}
+                label="Senha"
+                placeholder="Criar senha"
                 error={errors.password}
+                isValid={!errors.password && !!watch('password')}
               />
             )}
           />
+
           <Controller
             control={control}
             name="confirmPassword"
@@ -142,19 +135,13 @@ export default function SignUp() {
                 onChangeText={onChange}
                 label="Confirmar senha"
                 placeholder="Confirmar nova senha"
-                secureTextEntry
-                isValid={!errors.confirmPassword && !!watch('confirmPassword')}
                 error={errors.confirmPassword}
+                isValid={!errors.confirmPassword && !!watch('confirmPassword')}
               />
             )}
           />
-          <Button
-            success={success}
-            successLabel={successLabel}
-            onPress={handleSubmit(onSubmit)}
-            label={'Criar conta'}
-          />
-        </Grid>
+          <Button onPress={handleSubmit(onSubmit)} className="mt-5" label={'Entrar'} />
+        </View>
       </ScrollView>
     </View>
   );
