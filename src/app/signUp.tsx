@@ -1,39 +1,40 @@
-import { ScrollView, StatusBar, Text, ToastAndroid, View } from "react-native";
-import LottieView from "lottie-react-native";
-import { useRef, useState } from "react";
-import { Button } from "@/components/Button";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/Input";
-import { useForm, Controller } from "react-hook-form";
-import { registerSchema, RegisterSchema } from "@/schemas/registerSchema";
-import { useAuth } from "@/store/auth";
-import { Select } from "@/components/Select";
-import { Grid } from "@/components/Grid";
+import { ScrollView, StatusBar, Text, ToastAndroid, View } from 'react-native';
+import LottieView from 'lottie-react-native';
+import { useRef, useState } from 'react';
+import { Button } from '@/components/Button';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@/components/Input';
+import { useForm, Controller } from 'react-hook-form';
+import { registerSchema, RegisterSchema } from '@/schemas/registerSchema';
+import { Select } from '@/components/Select';
+import { Grid } from '@/components/Grid';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function SignUp() {
+  const [value, setValue] = useState('');
+  const { signUpWithEmailAndPassword, success } = useAuth();
   const lottieRef = useRef<LottieView>(null);
-  const { singUp, success, successLabel } = useAuth();
-  const [value, setValue] = useState("");
+  const successLabel = 'Conta Criada com sucesso!';
   const jobType = [
     {
-      label: "Desenvolvedor",
-      value: "developer",
+      label: 'Desenvolvedor',
+      value: 'developer',
     },
     {
-      label: "Suporte Técnico",
-      value: " technical_support",
+      label: 'Suporte Técnico',
+      value: ' technical_support',
     },
     {
-      label: "Gerente",
-      value: "manager",
+      label: 'Gerente',
+      value: 'manager',
     },
     {
-      label: "Supervisor",
-      value: "supervisor",
+      label: 'Supervisor',
+      value: 'supervisor',
     },
     {
-      label: "Técnico",
-      value: "technical",
+      label: 'Técnico',
+      value: 'technical',
     },
   ];
 
@@ -45,14 +46,14 @@ export default function SignUp() {
     formState: { errors },
   } = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   async function onSubmit(formValues: RegisterSchema) {
-    const { username, email, password } = formValues;
+    const { name, email, password, jobType } = formValues;
     try {
       if (password === formValues.confirmPassword) {
-        await singUp(username, email, password);
+        await signUpWithEmailAndPassword(name, email, password, jobType);
         reset();
       }
     } catch (error) {
@@ -63,12 +64,12 @@ export default function SignUp() {
 
   return (
     <View className="w-full flex-1 items-center mx-auto bg-neutral-900">
-      <StatusBar barStyle={"light-content"} />
+      <StatusBar barStyle={'light-content'} />
       <View className="w-full items-center justify-center bg-violet-600 rounded-b-[50px]">
         <LottieView
           ref={lottieRef}
           style={{ width: 220, height: 220 }}
-          source={require("@/lotties/mobile.json")}
+          source={require('@/lotties/mobile.json')}
           autoPlay
         />
       </View>
@@ -82,14 +83,14 @@ export default function SignUp() {
         <Grid columns={1} className="w-full items-center justify-center px-4">
           <Controller
             control={control}
-            name="username"
+            name="name"
             render={({ field: { onChange } }) => (
               <Input
                 onChangeText={onChange}
                 label="Nome de usuário"
                 placeholder="Criar nome de usuário"
-                error={errors.username}
-                isValid={!errors.username && !!watch("username")}
+                error={errors.name}
+                isValid={!errors.name && !!watch('name')}
               />
             )}
           />
@@ -102,7 +103,7 @@ export default function SignUp() {
                 label="E-mail"
                 placeholder="example@gmail.com"
                 error={errors.email}
-                isValid={!errors.email && !!watch("email")}
+                isValid={!errors.email && !!watch('email')}
               />
             )}
           />
@@ -128,7 +129,7 @@ export default function SignUp() {
                 onChangeText={onChange}
                 placeholder="Criar Senha"
                 secureTextEntry
-                isValid={!errors.password && !!watch("password")}
+                isValid={!errors.password && !!watch('password')}
                 error={errors.password}
               />
             )}
@@ -142,7 +143,7 @@ export default function SignUp() {
                 label="Confirmar senha"
                 placeholder="Confirmar nova senha"
                 secureTextEntry
-                isValid={!errors.confirmPassword && !!watch("confirmPassword")}
+                isValid={!errors.confirmPassword && !!watch('confirmPassword')}
                 error={errors.confirmPassword}
               />
             )}
@@ -151,7 +152,7 @@ export default function SignUp() {
             success={success}
             successLabel={successLabel}
             onPress={handleSubmit(onSubmit)}
-            label={"Criar conta"}
+            label={'Criar conta'}
           />
         </Grid>
       </ScrollView>
