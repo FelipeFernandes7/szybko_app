@@ -88,7 +88,7 @@ export default function RootLayout() {
               backgroundColor: '#7c3aed',
             },
             animation: 'fade_from_bottom',
-            headerShown: false,
+            headerShown: true,
           }}
         />
         <Stack.Screen
