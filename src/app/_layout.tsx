@@ -1,15 +1,16 @@
-import "react-native-reanimated";
-import * as SplashScreen from "expo-splash-screen";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import { useEffect } from "react";
-import Header from "@/components/Header";
+import 'react-native-reanimated';
+import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from 'expo-font';
+import { Stack } from 'expo-router';
+import { useEffect } from 'react';
+import Header from '@/components/Header';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    Poppins: require("../../assets/fonts/app_icons.ttf"),
+    Poppins: require('../../assets/fonts/app_icons.ttf'),
   });
 
   useEffect(() => {
@@ -23,72 +24,81 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack
-      screenOptions={{
-        header: (props) => <Header label={props.options.title!} />,
-      }}
-      initialRouteName="index"
-    >
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="+not-found" />
-      <Stack.Screen
-        name="employees"
-        options={{
-          headerTintColor: "#FFFFFF",
-          headerStyle: {
-            backgroundColor: "#7c3aed",
-          },
+    <AuthProvider>
+      <Stack
+        screenOptions={{
+          header: props => <Header label={props.options.title!} />,
+        }}
+        initialRouteName="index"
+      >
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
+        <Stack.Screen
+          name="employees"
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#7c3aed',
+            },
 
-          animation: "slide_from_right",
-          title: "Lista de funcionários",
-        }}
-      />
+            animation: 'slide_from_right',
+            title: 'Lista de funcionários',
+          }}
+        />
 
-      <Stack.Screen
-        name="order"
-        options={{
-          headerTintColor: "#FFFFFF",
-          headerStyle: {
-            backgroundColor: "#7c3aed",
-          },
-          animation: "slide_from_right",
-          title: "Encomendas",
-        }}
-      />
+        <Stack.Screen
+          name="order"
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#7c3aed',
+            },
+            animation: 'slide_from_right',
+            title: 'Encomendas',
+          }}
+        />
 
-      <Stack.Screen
-        name="day"
-        options={{
-          headerTintColor: "#FFFFFF",
-          headerStyle: {
-            backgroundColor: "#7c3aed",
-          },
-          animation: "slide_from_right",
-          title: "Tirar lixo",
-        }}
-      />
-      <Stack.Screen
-        name="snack"
-        options={{
-          headerTintColor: "#FFFFFF",
-          headerStyle: {
-            backgroundColor: "#7c3aed",
-          },
-          animation: "slide_from_right",
-          title: "Lanche da tarde",
-        }}
-      />
-      <Stack.Screen
-        name="signUp"
-        options={{
-          headerTintColor: "#FFFFFF",
-          headerStyle: {
-            backgroundColor: "#7c3aed",
-          },
-          animation: "fade_from_bottom",
-          headerShown: false,
-        }}
-      />
-    </Stack>
+        <Stack.Screen
+          name="day"
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#7c3aed',
+            },
+            animation: 'slide_from_right',
+            title: 'Tirar lixo',
+          }}
+        />
+        <Stack.Screen
+          name="snack"
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#7c3aed',
+            },
+            animation: 'slide_from_right',
+            title: 'Lanche da tarde',
+          }}
+        />
+        <Stack.Screen
+          name="signUp"
+          options={{
+            headerTintColor: '#FFFFFF',
+            headerStyle: {
+              backgroundColor: '#7c3aed',
+            },
+            animation: 'fade_from_bottom',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="signIn"
+          options={{
+            animation: 'fade_from_bottom',
+            headerShown: false,
+          }}
+        />
+      </Stack>
+    </AuthProvider>
   );
 }
