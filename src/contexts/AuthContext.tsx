@@ -24,7 +24,6 @@ type AuthContextType = {
   user: User | null;
   signed: boolean;
   loadingAuth: boolean;
-  success: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUpWithEmailAndPassword: (
     displayName: string,
@@ -40,7 +39,6 @@ const AuthContext = createContext({} as AuthContextType);
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
-  const [success, setSuccess] = useState(false);
   const signed = !!user;
 
   useEffect(() => {
@@ -76,7 +74,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
   ) {
     const user = await createUserWithEmailAndPassword(auth, email, password);
     const userRef = ref(database, `users/${user.user.uid}`);
-    setSuccess(true);
 
     await set(userRef, {
       uid: user.user.uid,
@@ -94,7 +91,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     };
     setUser(parsedUser);
     setLoadingAuth(false);
-    setSuccess(false);
   }
 
   async function signOut() {
@@ -107,7 +103,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       value={{
         user,
         signed,
-        success,
         loadingAuth,
         signOut,
         signIn,
