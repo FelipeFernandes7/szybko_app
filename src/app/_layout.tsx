@@ -87,14 +87,14 @@ export default function RootLayout() {
             headerStyle: {
               backgroundColor: '#7c3aed',
             },
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
             headerShown: true,
           }}
         />
         <Stack.Screen
           name="signIn"
           options={{
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
             headerShown: false,
           }}
         />
