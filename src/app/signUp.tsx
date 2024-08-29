@@ -1,56 +1,29 @@
 import { ScrollView, StatusBar, Text, View } from 'react-native';
-import { useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { Button } from '@/components/Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/Input';
-import { useForm, Controller } from 'react-hook-form';
-import { registerSchema, RegisterSchema } from '@/schemas/registerSchema';
-import { Select } from '@/components/Select';
-import { Grid } from '@/components/Grid';
 import { useAuth } from '@/contexts/AuthContext';
 import { router } from 'expo-router';
+import { Schema } from '@/schemas/schema';
 
 export default function SignUp() {
-  const [value, setValue] = useState('');
   const { signUpWithEmailAndPassword } = useAuth();
-  const jobType = [
-    {
-      label: 'Desenvolvedor',
-      value: 'developer',
-    },
-    {
-      label: 'Suporte Técnico',
-      value: ' technical_support',
-    },
-    {
-      label: 'Gerente',
-      value: 'manager',
-    },
-    {
-      label: 'Supervisor',
-      value: 'supervisor',
-    },
-    {
-      label: 'Técnico',
-      value: 'technical',
-    },
-  ];
 
   const {
     handleSubmit,
     watch,
-    reset,
     control,
     formState: { errors },
-  } = useForm<RegisterSchema>({
-    resolver: zodResolver(registerSchema),
+  } = useForm<Schema.SignUp.FormValue>({
+    resolver: zodResolver(Schema.SignUp.schema),
     mode: 'onChange',
   });
 
-  async function onSubmit(formValues: RegisterSchema) {
-    const { name, email, password, jobType } = formValues;
+  async function onSubmit(formValues: Schema.SignUp.FormValue) {
+    const { name, email, password } = formValues;
 
-    await signUpWithEmailAndPassword(name, email, password, jobType)
+    await signUpWithEmailAndPassword(name, email, password)
       .then(() => {
         alert('Conta criada com sucesso!');
         router.push('/signIn');
