@@ -1,11 +1,11 @@
 import { Text, View, StatusBar } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
-import { Input } from '@/components/Input';
-import { signInSchema, SignInSchema } from '@/schemas/signInSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, router } from 'expo-router';
-import { Button } from '@/components/Button';
 import { useAuth } from '@/contexts/AuthContext';
+import { Input } from '@/components/Input';
+import { Button } from '@/components/Button';
+import { Schema } from '@/schemas/schema';
 
 export default function SignIn() {
   const { signIn } = useAuth();
@@ -14,10 +14,10 @@ export default function SignIn() {
     watch,
     control,
     formState: { errors },
-  } = useForm<SignInSchema>({
-    resolver: zodResolver(signInSchema),
+  } = useForm<Schema.SignIn.FormValue>({
+    resolver: zodResolver(Schema.SignIn.schema),
   });
-  async function onSubmit(formValues: SignInSchema) {
+  async function onSubmit(formValues: Schema.SignIn.FormValue) {
     await signIn(formValues.email, formValues.password)
       .then(() => {
         router.push('/(tabs)');
@@ -60,8 +60,8 @@ export default function SignIn() {
           render={({ field: { onChange } }) => (
             <Input
               onChangeText={onChange}
-              label="E-mail"
-              placeholder="example@gmail.com"
+              label="Senha"
+              placeholder="Inserir Senha"
               error={errors.password}
               isValid={!errors.password && !!watch('password')}
             />
