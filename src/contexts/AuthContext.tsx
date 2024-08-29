@@ -29,7 +29,7 @@ type AuthContextType = {
     displayName: string,
     email: string,
     password: string,
-    jobType: string,
+    jobType?: string,
   ) => Promise<void>;
   signOut: () => Promise<void>;
 };
@@ -70,7 +70,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     displayName: string,
     email: string,
     password: string,
-    jobType: string,
+    jobType?: string,
   ) {
     const user = await createUserWithEmailAndPassword(auth, email, password);
     const userRef = ref(database, `users/${user.user.uid}`);
@@ -87,7 +87,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       name: displayName,
       avatar: null,
       email,
-      jobType,
+      jobType: null,
     };
     setUser(parsedUser);
     setLoadingAuth(false);
