@@ -72,7 +72,7 @@ export default function SignUp() {
           </Text>
         </View>
 
-        <View className="w-full flex-col px-4 bg-neutral-900 rounded-t-3xl ">
+        <View className="w-full flex-col px-4 bg-neutral-900 rounded-t-3xl h-screen">
           <Text className="text-white text-3xl my-8 font-medium">Criar Conta</Text>
           <Controller
             control={control}
@@ -100,19 +100,7 @@ export default function SignUp() {
               />
             )}
           />
-          <View className="w-full flex-col mb-3">
-            <Text className="font-medium text-white text-sm mb-1">Cargo</Text>
-            <View className="w-full items-center justify-center border border-neutral-700 bg-neutral-900 rounded-2xl px-1 h-14">
-              <Select
-                placeholder="Selecionar cargo"
-                mode="dropdown"
-                value={value}
-                options={jobType}
-                className="w-full text-xs text-white"
-                onChange={setValue}
-              />
-            </View>
-          </View>
+
           <Controller
             control={control}
             name="password"
